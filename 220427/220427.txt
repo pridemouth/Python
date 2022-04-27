@@ -1,0 +1,72 @@
+<python tkinter 중간정리>
+
+기본형>
+
+	from tkinter import *
+
+	# global variables
+
+	window = Tk()
+
+	# mainloop
+
+	window.mainloop()
+
+window의 기능>
+
+	window.title("asdf")	# set window title
+	window.geometry("nxm")	# set window size n by m(pixel)
+	window.resizable(width = TorF, height = TorF)	# set window resizable by its width and height
+	
+라벨>
+
+	lbl1 = Label(window, text = "text-string", font = ("font-family", font-size), fg = "foreground-color")
+	lbl2 = Label(window, text = "text-string", bg = "background-color", anchor = SE)
+	# anchor option
+	# 	default value : CENTER
+	#	other optinos : N, NE, E, SE, S, SW, W, NW (directions)
+	
+	lbl1.pack(side = TOP, fill = X, ipadx = 10, ipady = 10, padx = 10, pady = 10)
+	lbl2.place(x = x-location, y = y-location, width = width-length, height = height-length)
+	# side option
+	#	TOP, LEFT, RIGHT, CENTER, BOTTOM
+	# fill option
+	#	X : stretch this widget by x axis
+	#	Y : stretch this widget by x axis
+	# pad : (outside) padding
+	# ipad : inside padding
+	
+	lbl1.configure()
+	
+	Label()으로 해당 위젯의 속성을 지정,
+	pack()으로 화면에 표시.
+	pack()을 대체할 수 있는 함수로 place()가 존재.
+	위젯의 위치가 상대적인 pack()과는 다르게, place()는 해당 위젯의 위치가 고정됨
+
+사진>
+
+	photo = PhotoImage(file = "상대주소")
+	
+	활용
+	btn = Button(window, image = photo, command = func_a)
+	label = Label(window, image = photo)
+	btn.pack()
+	label = pack()
+
+메시지 윈도우>
+
+	import tkinter.messagebox
+	
+	tkinter.messagebox.showinfo("title-of-messagebox", "description-for-messagebox")
+
+체크박스, 라디오박스>
+
+	chk = intVar()
+	var = intVar()
+	cb = Checkbutton(window, text = "", variable = chk, command = func_a)
+	rb = Radiobutton(window, text = "", variable = var, value = 3, command = func_b)
+	
+	# intVar() 클래스는 tkinter.messagebox에 정의되어 있음.
+	# 사용자와의 상호작용을 통해 값을 전달받는 체크박스, 라디오박스 등은
+	# intVar 타입을 파라미터로 전달하게 되어 있음.
+	# intVar 타입은 get(), set()이 내장되어 있음
